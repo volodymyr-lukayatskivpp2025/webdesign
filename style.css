@@ -1,0 +1,725 @@
+:root {
+    /* Colors */
+    --color-brand: #3B66F5;
+    --color-surface-subtle: #F0F4FF;
+    --color-page-background: #FAFAFA;
+    --color-highlight: #FFB800;
+    --color-accent-button-border: #000;
+    --color-text-primary: #202944;
+    --color-text-secondary: #68738B;
+    --color-heading: #1C2A2B;
+    --color-surface: #fff;
+    --color-text-inverse: var(--color-surface);
+    --color-footer-background: var(--color-text-primary);
+    --color-border: #d7deef;
+    --color-border-subtle: #e7ebf4;
+    --color-text-on-dark-muted: rgb(255 255 255 / 70%);
+    --color-text-on-dark-subtle: rgb(255 255 255 / 85%);
+    --color-border-on-dark: rgb(255 255 255 / 18%);
+
+    /* Typography */
+    --font-family-body: "Inter", "Segoe UI", sans-serif;
+    --font-family-heading: var(--font-family-body);
+    --font-weight-regular: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-size-body: 1rem;
+    --font-size-small: .9rem;
+    --font-size-note: .85rem;
+    --font-size-label: .78rem;
+    --font-size-logo: 1.25rem;
+    --font-size-contact: 1.4rem;
+    --font-size-feature-icon: 1.5rem;
+    --font-size-price: 2.5rem;
+    --font-size-hero-min: 2.2rem;
+    --font-size-hero-max: 3.6rem;
+    --font-size-section-min: 1.8rem;
+    --font-size-section-max: 2.5rem;
+    --line-height-body: 1.6;
+    --line-height-heading: 1.2;
+    --line-height-text-heading: 1.25;
+    --letter-spacing-label: .08em;
+
+    /* Spacing */
+    --space-control-tight: .375rem;
+    --space-control: .5rem;
+    --space-control-comfortable: .625rem;
+    --space-control-inline: .75rem;
+    --space-content-tight: .875rem;
+    --space-content: 1rem;
+    --space-content-comfortable: 1.125rem;
+    --space-layout-tight: 1.25rem;
+    --space-card: 1.5rem;
+    --space-section-compact: 1.75rem;
+    --space-layout: 2rem;
+    --space-footer: 2.25rem;
+    --space-grid: 3rem;
+    --space-header-height: 4.75rem;
+    --space-section-block: 4.75rem;
+
+    /* Shape and borders */
+    --radius-control: 8px;
+    --radius-button: 10px;
+    --radius-media: 12px;
+    --radius-card: 16px;
+    --border-width-default: 1px;
+
+    /* Shadows */
+    --shadow-header: 0 2px 16px rgb(32 41 68 / 8%);
+    --shadow-card: 0 8px 28px rgb(32 41 68 / 7%);
+
+    /* Container */
+    --container-max-width: 70rem;
+    --container-gutter: 2.5rem;
+
+    /* Transitions */
+    --transition-duration-fast: 160ms;
+    --transition-easing-standard: ease;
+    --transition-link: color var(--transition-duration-fast) var(--transition-easing-standard);
+    --transition-interactive:
+        transform var(--transition-duration-fast) var(--transition-easing-standard),
+        filter var(--transition-duration-fast) var(--transition-easing-standard);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+h1, h2, h3, p {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+    line-height: var(--line-height-text-heading);
+    margin-top: 0;
+}
+
+body {
+    background: var(--color-page-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.container {
+    width: min(var(--container-max-width), calc(100% - var(--container-gutter)));
+    margin-inline: auto;
+}
+
+/* Header and shared actions */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-page-background);
+    box-shadow: var(--shadow-header);
+}
+
+.header-container,
+.main-nav,
+.header-action,
+.hero-buttons,
+.options-group,
+.radio-group,
+.footer-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    min-height: var(--space-header-height);
+    justify-content: space-between;
+    gap: var(--space-card);
+}
+
+.logo {
+    color: var(--color-text-primary);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-logo);
+    font-weight: var(--font-weight-extrabold);
+}
+
+.header-logo {
+    display: block;
+    width: 6.5rem;
+    height: 4rem;
+    object-fit: contain;
+}
+
+.main-nav {
+    flex: 1;
+    justify-content: center;
+    gap: var(--space-card);
+}
+
+.header-action {
+    flex: 0 0 auto;
+}
+
+.main-nav a,
+.footer-col a,
+.socials a,
+.footer-links a {
+    transition: var(--transition-link);
+}
+
+.main-nav a:hover,
+.footer-col a:hover,
+.socials a:hover,
+.footer-links a:hover,
+.link,
+.center-link a {
+    color: var(--color-text-primary);
+}
+
+.btn {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-control-comfortable) var(--space-layout-tight);
+    border: 0;
+    border-radius: var(--radius-button);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-interactive);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(.96);
+}
+
+.btn-primary {
+    background: var(--color-brand);
+    color: var(--color-text-inverse);
+}
+
+.btn-accent {
+    background: var(--color-highlight);
+    color: var(--color-text-primary);
+    border: var(--border-width-default) solid var(--color-accent-button-border);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Page sections and hero */
+.hero-section,
+.about-section,
+.services-section,
+.calculator-section,
+.team-section,
+.testimonials-section,
+.appointment-section,
+.location-section {
+    padding-block: var(--space-section-block);
+}
+
+.calculator-section,
+.appointment-section {
+    background: var(--color-surface-subtle);
+}
+
+.hero-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--color-surface-subtle);
+}
+
+.hero-background-video {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 0;
+}
+
+.hero-content::before {
+    position: absolute;
+    z-index: -1;
+    inset: calc(-1 * var(--space-card)) calc(-1 * var(--space-grid));
+    background: linear-gradient(
+        90deg,
+        var(--color-surface) 0%,
+        var(--color-surface) calc(100% - var(--space-grid)),
+        rgb(255 255 255 / 0%) 100%
+    );
+    content: "";
+    pointer-events: none;
+}
+
+/* Section layout */
+.hero-container,
+.about-container,
+.calculator-wrapper,
+.appointment-container,
+.location-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: var(--space-grid);
+}
+
+.hero-title,
+.section-title {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading);
+}
+
+.hero-title {
+    margin-bottom: var(--space-content-comfortable);
+    font-size: clamp(var(--font-size-hero-min), 5vw, var(--font-size-hero-max));
+}
+
+.hero-description,
+.section-subtitle,
+.about-text,
+.service-text,
+.feature-text,
+.info-card-text,
+.doctor-spec,
+.testimonial-info,
+.note,
+.summary-disclaimer,
+.form-disclaimer {
+    color: var(--color-text-secondary);
+}
+
+/* Shared cards, labels, and media */
+.hero-buttons {
+    flex-wrap: wrap;
+    gap: var(--space-control-inline);
+    margin-block: var(--space-card);
+}
+
+.hero-contact-card,
+.image-placeholder,
+.feature-card,
+.info-card,
+.service-card,
+.calculator-form,
+.calculator-summary,
+.doctor-card,
+.testimonial-card,
+.appointment-form,
+.map-placeholder {
+    padding: var(--space-card);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.status-indicator,
+.sub-label,
+.doctor-label,
+.summary-label,
+.testimonial-label {
+    color: var(--color-brand);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: var(--letter-spacing-label);
+}
+
+.status-indicator {
+    width: fit-content;
+    margin-right: auto;
+    text-align: left;
+}
+
+.phone-number,
+.phone {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-contact);
+    font-weight: var(--font-weight-extrabold);
+}
+
+.phone-note,
+.summary-disclaimer,
+.form-disclaimer {
+    font-size: var(--font-size-note);
+}
+
+.image-placeholder,
+.doctor-photo,
+.map-placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--color-surface-subtle);
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.image-placeholder {
+    min-height: 260px;
+}
+
+.features-section {
+    padding-block: var(--space-section-compact);
+    background: var(--color-brand);
+    color: var(--color-text-inverse);
+}
+
+.features-grid,
+.about-cards,
+.team-grid,
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-layout-tight);
+}
+
+.feature-card {
+    padding: var(--space-content-comfortable);
+    background: transparent;
+    box-shadow: none;
+}
+
+.feature-icon {
+    color: var(--color-highlight);
+    font-size: var(--font-size-feature-icon);
+    font-weight: var(--font-weight-extrabold);
+}
+
+.feature-text {
+    color: var(--color-text-on-dark-subtle);
+}
+
+.section-title {
+    margin-block: var(--space-control) var(--space-content);
+    font-size: clamp(var(--font-size-section-min), 4vw, var(--font-size-section-max));
+}
+
+.section-subtitle {
+    max-width: 42.5rem;
+    margin-bottom: var(--space-section-compact);
+}
+
+.about-text p + p {
+    margin-top: var(--space-content-tight);
+}
+
+.about-cards {
+    grid-template-columns: 1fr;
+}
+
+/* Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-layout-tight);
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-content-tight);
+    min-width: 0;
+}
+
+.service-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-control-inline);
+}
+
+.service-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 auto;
+    border-radius: var(--radius-control);
+    object-fit: cover;
+}
+
+.service-title {
+    margin-bottom: var(--space-control);
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-semibold);
+}
+
+.service-subtitle {
+    color: var(--color-text-secondary);
+}
+
+.service-card .btn {
+    margin-top: auto;
+}
+
+.center-link {
+    margin-top: var(--space-card);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+}
+
+.calculator-wrapper {
+    align-items: stretch;
+}
+
+/* Calculator */
+.options-group,
+.radio-group {
+    flex-wrap: wrap;
+    gap: var(--space-control);
+    margin-block: var(--space-control-inline) var(--space-card);
+}
+
+.option-btn {
+    padding: var(--space-control) var(--space-content-tight);
+    border: var(--border-width-default) solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    cursor: pointer;
+}
+
+.option-btn.active {
+    border-color: var(--color-brand);
+    background: var(--color-surface-subtle);
+    color: var(--color-text-primary);
+}
+
+.form-group-title,
+.info-card-title,
+.doctor-name,
+.testimonial-author,
+.summary-title {
+    margin-bottom: var(--space-control);
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-semibold);
+}
+
+.calculator-note,
+.summary-details,
+.info-group {
+    margin-bottom: var(--space-content-comfortable);
+}
+
+.summary-price {
+    margin-block: var(--space-control) var(--space-content);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-price);
+    font-weight: var(--font-weight-extrabold);
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding-block: var(--space-control);
+    border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+/* Team, testimonials, and appointment */
+.doctor-photo {
+    min-height: 11.25rem;
+    margin-bottom: var(--space-content);
+    border-radius: var(--radius-media);
+}
+
+.doctor-exp {
+    margin-block: var(--space-control-comfortable);
+    font-weight: var(--font-weight-bold);
+}
+
+.testimonial-author {
+    margin-block: var(--space-control-comfortable);
+    font-weight: var(--font-weight-semibold);
+}
+
+.appointment-desc,
+.appointment-note,
+.appointment-contact {
+    margin-top: var(--space-content-tight);
+}
+
+.form-field {
+    margin-bottom: var(--space-content);
+}
+
+.field-label {
+    display: block;
+    margin-bottom: var(--space-control-tight);
+    font-weight: var(--font-weight-bold);
+}
+
+.form-field input:not([type="radio"]) {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: var(--space-control-comfortable) var(--space-control-inline);
+    border: var(--border-width-default) solid var(--color-border);
+    border-radius: var(--radius-control);
+}
+
+.map-placeholder {
+    min-height: 21.25rem;
+}
+
+/* Footer */
+.site-footer {
+    padding-top: var(--space-grid);
+    background: var(--color-footer-background);
+    color: var(--color-text-inverse);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: var(--space-layout);
+    padding-bottom: var(--space-footer);
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-control);
+}
+
+.col-title {
+    margin-bottom: var(--space-control);
+    font-size: var(--font-size-body);
+}
+
+.brand-text,
+.footer-col .sub-label {
+    color: var(--color-text-on-dark-muted);
+}
+
+.socials {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: var(--space-content-tight);
+    gap: var(--space-content);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-content);
+    padding-block: var(--space-content-comfortable);
+    border-top: var(--border-width-default) solid var(--color-border-on-dark);
+    font-size: var(--font-size-small);
+}
+
+.footer-links {
+    flex-wrap: wrap;
+    gap: var(--space-content);
+}
+
+@media (max-width: 800px) {
+    .hero-background-video {
+        display: none;
+    }
+
+    .hero-content::before {
+        display: none;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-block: var(--space-content-tight);
+    }
+
+    .main-nav {
+        order: 3;
+        flex: 1 0 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-control-inline) var(--space-content-comfortable);
+    }
+
+    .header-action {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .hero-container,
+    .about-container,
+    .calculator-wrapper,
+    .appointment-container,
+    .location-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-section-compact);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .container {
+        --container-gutter: 1.75rem;
+        width: min(calc(100% - var(--container-gutter)), var(--container-max-width));
+    }
+
+    .hero-section,
+    .about-section,
+    .services-section,
+    .calculator-section,
+    .team-section,
+    .testimonials-section,
+    .appointment-section,
+    .location-section {
+        padding-block: var(--space-grid);
+    }
+
+    .main-nav {
+        font-size: var(--font-size-small);
+    }
+
+    .footer-container,
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-background-video {
+        display: none;
+    }
+}
